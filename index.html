@@ -4,38 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tạo Mã QR Thanh Toán</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Tạo Mã QR Thanh Toán</h1>
-
+    <h1>Chào mừng bạn đến với trang tạo mã QR thanh toán!</h1>
     <form id="qrForm">
       <div class="custom-select" id="bankSelect">
         <div class="select-selected">Chọn ngân hàng</div>
         <div class="select-items"></div>
       </div>
-
-      <input type="text" id="accountName" placeholder="Tên người nhận" required>
-      <input type="text" id="accountNo" placeholder="Số tài khoản" required>
-      <input type="text" id="amount" placeholder="Số tiền (VD: 1,000,000)" oninput="this.value = this.value.replace(/[^0-9,.]/g, '')">
-      <input type="text" id="description" placeholder="Mô tả (tùy chọn)">
-      <input type="color" id="qrColor" value="#000000" title="Chọn màu mã QR">
-
+      <input type="text" id="accountName" placeholder="Tên người nhận (tùy chọn)">
+      <input type="text" id="accountNo" placeholder="Số tài khoản">
+      <input type="text" id="amount" placeholder="Số tiền (VNĐ)">
+      <input type="text" id="description" placeholder="Nội dung chuyển khoản">
+      <div class="custom-select" id="qrSizeSelect">
+        <div class="select-selected">Kích thước QR: Vừa</div>
+        <div class="select-items">
+          <div data-value="small">Kích thước QR: Nhỏ</div>
+          <div data-value="medium">Kích thước QR: Vừa</div>
+          <div data-value="large">Kích thước QR: Lớn</div>
+        </div>
+      </div>
+      <div class="custom-select" id="qrFormatSelect">
+        <div class="select-selected">Định dạng: JPG</div>
+        <div class="select-items">
+          <div data-value="png">Định dạng: PNG</div>
+          <div data-value="svg">Định dạng: SVG</div>
+        </div>
+      </div>
+      <button type="button" id="scanQrBtn">Quét QR</button>
+      <button type="button" id="saveTemplateBtn">Lưu mẫu</button>
       <button type="submit">Tạo QR</button>
     </form>
-
+    <div id="paymentPreview"></div>
     <div id="qrCode"></div>
-    <div id="qrActions" style="display: none; justify-content: space-around; margin-top: 20px;">
+    <div id="qrActions" style="display: none; justify-content: center; gap: 20px; margin-top: 20px;">
       <button id="downloadBtn">Tải về ảnh QR</button>
       <button id="copyBtn">Sao chép liên kết</button>
+      <button id="shareEmailBtn">Chia sẻ qua Email</button>
+      <button id="shareWhatsAppBtn">Chia sẻ qua WhatsApp</button>
+      <button id="shareTelegramBtn">Chia sẻ qua Telegram</button>
     </div>
-
-    <div id="toast"></div>
+    <div id="qrHistory">
+      <h3>Lịch sử mã QR</h3>
+      <div id="qrHistoryList"></div>
+    </div>
+    <div id="templates">
+      <h3>Mẫu thanh toán</h3>
+      <div id="templateList"></div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <!-- QR Scan Modal -->
+    <div id="qrScanModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <h3>Quét mã QR</h3>
+        <video id="qrVideo" autoplay playsinline></video>
+        <canvas id="qrCanvas" style="display: none;"></canvas>
+        <button id="stopScanBtn">Dừng quét</button>
+      </div>
+    </div>
   </div>
-
   <script src="script.js"></script>
-  <p>Chào mừng bạn đến với trang tạo mã QR thanh toán!</p>
 </body>
 </html>
