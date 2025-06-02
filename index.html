@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tạo Mã QR Thanh Toán</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Mã QR Thanh Toán</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Tạo Mã QR Thanh Toán</h1>
-        
-        <form id="qrForm">
-            <div class="custom-select" id="bankSelect">
-                <div class="select-selected">Chọn ngân hàng</div>
-                <div class="select-items"></div>
-            </div>
+  <div class="container">
+    <h1>Tạo Mã QR Thanh Toán</h1>
 
-            <input type="text" id="accountName" placeholder="Tên người nhận">
-            <input type="text" id="accountNo" placeholder="Số tài khoản">
-            <input type="text" id="amount" placeholder="Số tiền (VD: 1,000,000)">
-            <input type="text" id="description" placeholder="Mô tả (không bắt buộc)">
-            <input type="color" id="qrColor" value="#000000" title="Chọn màu mã QR">
+    <form id="qrForm">
+      <div class="custom-select" id="bankSelect">
+        <div class="select-selected">Chọn ngân hàng</div>
+        <div class="select-items"></div>
+      </div>
 
-            <button type="submit">Tạo QR</button>
-        </form>
+      <input type="text" id="accountName" placeholder="Tên người nhận" required>
+      <input type="text" id="accountNo" placeholder="Số tài khoản" required>
+      <input type="text" id="amount" placeholder="Số tiền (VD: 1,000,000)" oninput="this.value = this.value.replace(/[^0-9,.]/g, '')">
+      <input type="text" id="description" placeholder="Mô tả (tùy chọn)">
+      <input type="color" id="qrColor" value="#000000" title="Chọn màu mã QR">
 
-        <div id="qrCode"></div>
-        <div id="qrActions" style="display: none;">
-            <button id="downloadBtn">Tải về ảnh QR</button>
-            <button id="copyBtn">Sao chép liên kết</button>
-        </div>
+      <button type="submit">Tạo QR</button>
+    </form>
 
-        <div id="toast"></div>
+    <div id="qrCode"></div>
+    <div id="qrActions" style="display: none; justify-content: space-around; margin-top: 20px;">
+      <button id="downloadBtn">Tải về ảnh QR</button>
+      <button id="copyBtn">Sao chép liên kết</button>
     </div>
 
-    <script src="script.js"></script>
-    <p>Chào mừng bạn đến với trang tạo mã QR thanh toán!</p>
+    <div id="toast"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <p>Chào mừng bạn đến với trang tạo mã QR thanh toán!</p>
 </body>
 </html>
