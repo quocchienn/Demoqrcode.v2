@@ -1,19 +1,72 @@
+# 🧾 Demo QR Code v2 - Tạo mã QR thanh toán ngân hàng siêu tiện lợi
 
-## 🌐Socials
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/https://facebook.com/quocchien2709) [![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white)](https://tiktok.com/@https://www.tiktok.com/@quocchien2709) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/c/https://youtube.com/@quocchienn) 
+**Chào anh em!**  
+Lại là mình đây 😄 Lần này mình đã **update thêm một số tính năng mới nho nhỏ** và **sửa lại theo góp ý trước đó**.  
+Mong anh em test lại và trải nghiệm thử, nhớ cho mình xin ít feedback để cải thiện thêm nhé!
 
-# 💻Tech Stack
-![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![Datadog](https://img.shields.io/badge/datadog-%23632CA6.svg?style=for-the-badge&logo=datadog&logoColor=white) ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white) ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D) ![Stylus](https://img.shields.io/badge/stylus-%23ff6347.svg?style=for-the-badge&logo=stylus&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Realm](https://img.shields.io/badge/Realm-39477F?style=for-the-badge&logo=realm&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
-# 📊GitHub Stats :
-![](https://github-readme-stats.vercel.app/api?username=quocchienn&theme=omni&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=quocchienn&theme=omni&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=quocchienn&theme=omni&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+🧪 **Trải nghiệm trực tiếp**: [http://taoqrcode.infy.uk/](http://taoqrcode.infy.uk/)  
+🧑‍💻 **Source code GitHub**: [https://github.com/quocchienn/Demoqrcode.v2](https://github.com/quocchienn/Demoqrcode.v2)
 
-## 🏆GitHub Trophies
-![](https://github-trophies.vercel.app/?username=quocchienn&theme=radical&no-frame=false&no-bg=false&margin-w=4)
+---
 
-  ## 💰You can help me by Donating
-  [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/quocchienn) 
+## 🔧 Các chức năng chính:
 
-  <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
-  
+### 1. ✅ Tạo mã QR thanh toán
+- Chọn **ngân hàng** (46 ngân hàng, có logo & tìm kiếm).
+- Nhập **tên người nhận** (tùy chọn), **số tài khoản** (bắt buộc), **số tiền (VNĐ)** (tự động định dạng), và **nội dung**.
+- Chọn **kích thước QR** (Nhỏ / Vừa / Lớn) và **định dạng** (PNG / SVG).
+- Tạo mã QR thông qua **VietQR API**, hiển thị tương ứng.
+
+### 2. 👀 Xem trước thông tin QR
+- Hiển thị thông tin đã nhập: ngân hàng, tên, STK, số tiền, nội dung, kích thước, định dạng.
+- **Cập nhật thời gian thực** theo input.
+
+### 3. 📥 Tải mã QR
+- Hỗ trợ tải QR về với đúng định dạng `.png` hoặc `.svg`.
+- Có **toast xác nhận tải thành công**.
+
+### 4. 📋 Sao chép liên kết
+- Copy link QR với 1 click.
+- Toast thông báo **thành công/thất bại**.
+
+### 5. 📤 Chia sẻ tiện lợi
+- Chia sẻ thông tin QR qua **Email, WhatsApp, Telegram**.
+- Nội dung tự động soạn sẵn: ngân hàng, tên, STK, số tiền, nội dung, URL QR.
+- Mở ứng dụng chia sẻ kèm toast xác nhận.
+
+### 6. 💾 Lưu mẫu thanh toán
+- Lưu tối đa **10 mẫu ngân hàng + tên + STK** vào `localStorage`.
+- Có thể tải mẫu để điền lại form.
+- Hỗ trợ xóa toàn bộ mẫu.
+
+### 7. 📜 Lịch sử mã QR đã tạo
+- Lưu lại tối đa **10 mã QR** đã tạo gần nhất (gồm thông tin & thời gian).
+- Có thể tải lại từ lịch sử.
+- Xóa toàn bộ lịch sử nếu muốn.
+
+### 8. 🎨 Giao diện đẹp mắt
+- Giao diện **responsive** (desktop + mobile).
+- Hiệu ứng nhẹ nhàng: **gradient nền, fade-in, tiêu đề glow, hover/click animation**.
+- Mã QR hiển thị đẹp: **bo góc, đổ bóng, scale khi hover**.
+
+### 9. 🛡️ Xử lý lỗi thông minh
+- Kiểm tra input (bắt buộc có ngân hàng + STK).
+- Thông báo lỗi khi API lỗi.
+- `console.error` khi dropdown hay tải QR gặp lỗi.
+
+### 10. ✨ Tính năng phụ hỗ trợ
+- Tự động **định dạng số tiền** (dấu chấm ngăn cách).
+- Cập nhật real-time QR & preview.
+- Xóa ký tự không hợp lệ khỏi ô tiền.
+- Hỗ trợ định dạng **SVG và PNG**.
+
+---
+
+## 📌 Góp ý & hỗ trợ
+Mọi ý kiến đóng góp đều rất quý giá 🙏  
+Bạn có thể mở Issue hoặc tạo Pull Request nếu muốn cải thiện thêm!
+
+---
+
+## 📄 License
+MIT © [quocchienn](https://github.com/quocchienn)
