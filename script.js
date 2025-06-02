@@ -28,7 +28,7 @@ const banks = [
   { id: "SCB", name: "SCB", logo: "https://api.vietqr.io/image/SCB.png", bin: "970429" },
   { id: "SEABANK", name: "SeABank", logo: "https://api.vietqr.io/image/SEA.png", bin: "970440" },
   { id: "SHB", name: "SHB", logo: "https://api.vietqr.io/image/SHB.png", bin: "970443" },
-  { id: "SHBVNEO", name: "Shinhan Bank", logo: "https://api.vietqr.io/image/SHBVN.png", bin: "970424" },
+  { id: "SHBVN", name: "Shinhan Bank", logo: "https://api.vietqr.io/image/SHBVN.png", bin: "970424" },
   { id: "STANDARDCHARTERED", name: "Standard Chartered", logo: "https://api.vietqr.io/image/SC.png", bin: "970410" },
   { id: "TPB", name: "TPBank", logo: "https://api.vietqr.io/image/TPB.png", bin: "970423" },
   { id: "UNITEDOVERSEAS", name: "UOB", logo: "https://api.vietqr.io/image/UOB.png", bin: "970458" },
@@ -37,12 +37,12 @@ const banks = [
   { id: "VIETBANK", name: "VietBank", logo: "https://api.vietqr.io/image/VietBank.png", bin: "970433" },
   { id: "VIETCOMBANK", name: "Vietcombank", logo: "https://api.vietqr.io/image/VCB.png", bin: "970436" },
   { id: "VIETINBANK", name: "VietinBank", logo: "https://api.vietqr.io/image/VTB.png", bin: "970415" },
-  {id: "VPBA", name: "VPBank", logo: "https://api.vietqr.io/image/VPB.png", bin: "970432" },
-  { id: "VRB", name: "VRB", logo: "https://api.vietqr.io/image/VRB.png", bin: "970421" },
-  { id: "WOORIBANK", name: "Woori Bank", logo: "https://api.vietqr.io/image/WB.png", bin: "970457" },
-  { id: "TNEX", name: "TNEX BY MSB", logo: "https://api.vietqr.io/image/TNEX.png", bin: "msb" },
+  { id: "VPBA", name: "VPBank", logo: "https://api.vietqr.io/image/VPB.png", bin: "970432" },
+  { id: "VRB", name: "VRB", logo: "https://api.vietqr.io/image/VRB.png", bin: "390" },
+  { id: "WOORIBANK", name: "Woori Bank", logo: "https://api.vietqr.io/image/WB.png", bin: "775" },
+  { id: "TNEX", name: "TNEX BY MSB", logo: "https://api.vietbank.io/image/TNEX.png", bin: "msb" },
   { id: "TIMO", name: "Timo", logo: "https://api.vietqr.io/image/TIMO.png", bin: "Timo" },
-  { id: "TCB", name: "Techcombank", logo: "https://api.vietqr.io/image/TCB.png", bin: "970407" },
+  { id: "TCB", name: "Techcombank", logo: " https://api.vietqr.io/image/TCB.png", bin: "970407" },
 ];
 
 let selectedBank = null;
@@ -52,7 +52,7 @@ let selectedFormat = 'png';
 let videoStream = null;
 
 function createCustomSelect(items, containerId, type) {
-  const select = document.getElementById(containerId);
+  const select = document.getElementById('containerId');
   if (!select) {
     console.error(`Không tìm thấy container với ID: ${containerId}`);
     return;
@@ -202,7 +202,7 @@ function updateQRCode() {
     return;
   }
 
-  // Adjust VietQR URL based on format
+  // Điều chỉnh VietQR URL dựa trên định dạng
   const formatParam = selectedFormat === 'svg' ? 'svg' : 'print';
   qrUrl = `https://img.vietqr.io/image/${selectedBank.id}-${accountNo}-${formatParam}.png?amount=${amount}&addInfo=${encodeURIComponent(description)}&accountName=${encodeURIComponent(accountName)}`;
 
@@ -284,11 +284,11 @@ document.getElementById('shareEmailBtn').onclick = () => {
     const subject = encodeURIComponent('Mã QR Thanh Toán');
     const body = encodeURIComponent(
       `Thông tin thanh toán:\n` +
-      `Ngân hàng: ${selectedBank ? selectedBank.name : 'Không xác định'}\n` +
-      `Tên người nhận: ${accountName !== 'Unknown' ? accountName : 'Không nhập'}\n` +
+      `Ngân hàng: ${selectedBank ? selectedBank.name : 'Không xác định'}\n' +
+      `Tên người nhận: ${accountName !== 'Unknown' ? accountName : 'Không nhập'}\n' +
       `Số tài khoản: ${accountNo}\n` +
       `Số tiền: ${amount} VNĐ\n` +
-      `Nội dung: ${description || 'Không có'}\n` +
+      `Nội dung: ${description || 'Không có'}\n' +
       `Liên kết mã QR: ${qrUrl}`
     );
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
@@ -311,7 +311,7 @@ document.getElementById('shareWhatsAppBtn').onclick = () => {
     const text = encodeURIComponent(
       `Thông tin thanh toán:\n` +
       `Ngân hàng: ${selectedBank ? selectedBank.name : 'Không xác định'}\n` +
-      `Tên người nhận: ${accountName !== 'Unknown' ? accountName : 'Không nhập'}\n` +
+      `Tên tài khoản: ${accountName !== 'Unknown' ? accountName : 'Không nhập'}\n` +
       `Số tài khoản: ${accountNo}\n` +
       `Số tiền: ${amount} VNĐ\n` +
       `Nội dung: ${description || 'Không có'}\n` +
@@ -343,7 +343,7 @@ document.getElementById('shareTelegramBtn').onclick = () => {
       `Nội dung: ${description || 'Không có'}\n` +
       `Liên kết mã QR: ${qrUrl}`
     );
-    window.open(`https://t.me/share/url?url=${text}`, '_blank');
+    window.open(`https://t.me/share?url=${text}`, '_blank');
     showToast("Đã mở Telegram để chia sẻ mã QR!");
   } else {
     showToast("Không có mã QR để chia sẻ!");
@@ -357,24 +357,7 @@ function showToast(message, duration = 4000) {
   setTimeout(() => toast.classList.remove("show"), duration);
 }
 
-function saveToHistory(bank, accountName, accountNo, amount, description, qrUrl, format) {
-  const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
-  history.unshift({
-    bank: bank.name,
-    bankLogo: bank.logo,
-    accountName: accountName !== 'Unknown' ? accountName : 'Không nhập',
-    accountNo,
-    amount: amount.toLocaleString('vi-VN'),
-    description,
-    qrUrl,
-    format,
-    timestamp: new Date().toLocaleString('vi-VN')
-  });
-  localStorage.setItem('qrHistory', JSON.stringify(history.slice(0, 10)));
-  renderHistory();
-}
-
-function renderHistory() {
+function saveToHistory() {
   const historyList = document.getElementById('qrHistoryList');
   const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
   historyList.innerHTML = '';
@@ -384,6 +367,7 @@ function renderHistory() {
     div.innerHTML = `
       <img src="${item.bankLogo}" alt="${item.bank}">
       <div>
+      <p>
         <p><strong>${item.bank}</strong> - ${item.accountName}</p>
         <p>${item.accountNo} | ${item.amount} VNĐ | ${item.timestamp}</p>
       </div>
@@ -391,7 +375,7 @@ function renderHistory() {
     div.onclick = () => {
       qrUrl = item.qrUrl;
       selectedFormat = item.format;
-      document.getElementById('qrCode').innerHTML = `<${item.format === 'svg' ? 'svg' : 'img'} src="${qrUrl}" alt="QR Code" class="qr-${selectedQrSize}">`;
+      document.getElementById('qrCode').innerHTML = `<${item.format === 'svg' ? 'img' : 'svg' src="${qrUrl}" alt="QR Code" class="qr-${selectedQrSize}">`;
       document.getElementById('qrActions').style.display = 'flex';
       showToast("Đã tải mã QR từ lịch sử!");
     };
@@ -427,7 +411,7 @@ function renderTemplates() {
     div.innerHTML = `
       <img src="${item.bank.logo}" alt="${item.bank.name}">
       <div>
-        <div>p><strong>${item.bank.name}</strong> - ${item.accountName}</p>
+        <p><strong>${item.bank.name}</strong> - ${item.accountName}</p>
         <p>${item.accountNo}</p>
       </div>
     `;
@@ -452,7 +436,7 @@ function clearHistory() {
 function clearTemplates() {
   localStorage.removeItem('qrTemplates');
   renderTemplates();
-  showToast("Đã xóa tất cả mẫu thanh toán!");
+  showToast("Đã xóa tất cả mẫu!");
 }
 
 // QR Scanning Logic
@@ -467,7 +451,7 @@ function startQRScanner() {
       videoStream = stream;
       video.srcObject = stream;
       video.play();
-      function scan() {
+      function scanQR() {
         if (!videoStream) return;
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -479,12 +463,12 @@ function startQRScanner() {
           stopQRScanner();
           return;
         }
-        requestAnimationFrame(scan);
+        requestAnimationFrame(scanQR);
       }
-      scan();
+      scanQR();
     })
     .catch(error => {
-      showToast("Không thể truy cập camera! Vui lòng kiểm tra quyền truy cập.");
+      showToast("Không thể truy cập camera! Vui lòng kiểm tra quyền hoặc tải lên hình ảnh.");
       console.error("QR Scanner Error:", error);
       stopQRScanner();
     });
@@ -499,25 +483,48 @@ function stopQRScanner() {
   document.getElementById('qrScanModal').style.display = 'none';
 }
 
+// Upload QR Image Logic
+function processQRImage(file) {
+  const canvas = document.getElementById('qrCanvas');
+  const canvasContext = canvas.getContext('2d');
+  const img = new Image();
+  img.onload = () => {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvasContext.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+    const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+    if (qrCode) {
+      processQRData(qrCode.data);
+    } else {
+      showToast("Không tìm thấy mã QR trong hình ảnh! Vui lòng thử lại.");
+    }
+  };
+  img.onerror = () => {
+    showToast("Lỗi tải hình ảnh! Vui lòng chọn file hợp lệ.");
+  };
+  img.src = URL.createObjectURL(file);
+}
+
 function processQRData(data) {
   try {
-    // VietQR format: 38-character ID or URL
+    // VietQR format: 38-character ID hoặc URL
     let qrInfo = {};
-    if (data.startsWith('http')) {
+    if (data.startsWith('https://')) {
       // Parse URL (e.g., https://img.vietqr.io/image/BIDV-1234567890-print.png?amount=1000000&addInfo=Test&accountName=NGUYEN+VAN+A)
       const urlParams = new URL(data).searchParams;
       qrInfo = {
-        bankId: data.match(/image\/([A-Za-z]+)-/)?.[1],
-        accountNo: data.match(/image\/[A-Za-z]+-([0-9]+)/)?.[1],
+        bankId: data.match(/image\/([A-Za-z0-9]+)-/)?.[1],
+        accountNo: data.match(/image\/[^\/]+-([0-9]+)/)?.[1],
         amount: urlParams.get('amount'),
         description: urlParams.get('addInfo'),
         accountName: urlParams.get('accountName')
       };
-    } else if (data.match(/^\d{38}/)) {
-      // Parse VietQR ID (simplified parsing for example)
-      const bankBin = data.substr(8, 6); // BIN at position 8-13
-      const accountNo = data.substr(14, 10); // Account number (example length)
-      const amount = '';
+    } else if (data.match(/^\d{38}$/)) {
+      // VietQR ID (giả định đơn giản)
+      const bankBin = data.substr(8, 6);
+      const qrCode = data.substr(14, 10);
+      const qrCode = '';
       const description = '';
       qrInfo = { bankId: banks.find(b => b.bin === bankBin)?.id, accountNo, amount, description };
     }
@@ -527,7 +534,7 @@ function processQRData(data) {
       if (bank) {
         selectedBank = bank;
         document.getElementById('bankSelect').querySelector('.select-selected').innerHTML = `<img src="${bank.logo}" alt="${bank.name}">${bank.name}`;
-        document.getElementById('accountNo').value = qrInfo.accountName || '';
+        document.getElementById('accountName').value = qrInfo.accountName || '';
         document.getElementById('accountNo').value = qrInfo.accountNo;
         document.getElementById('amount').value = qrInfo.amount ? parseInt(qrInfo.amount).toLocaleString('vi-VN') : '';
         document.getElementById('description').value = qrInfo.description || '';
@@ -557,6 +564,17 @@ document.getElementById('scanQrBtn').onclick = () => {
   startQRScanner();
 };
 
+document.getElementById('uploadQrBtn').onclick = () => {
+  document.getElementById('qrImageInput').click();
+};
+
+document.getElementById('qrImageInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    processQRImage(file);
+  }
+});
+
 document.getElementById('closeModalBtn').onclick = stopQRScanner;
 document.getElementById('stopScanBtn').onclick = stopQRScanner;
 
@@ -579,3 +597,4 @@ window.onload = function() {
   clearTemplateBtn.onclick = clearTemplates;
   templateSection.appendChild(clearTemplateBtn);
 };
+</xai>
