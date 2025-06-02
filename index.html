@@ -28,15 +28,13 @@
         </div>
       </div>
       <div class="custom-select" id="qrFormatSelect">
-        <div class="select-selected">Định dạng: PNG</div>
+        <div class="select-selected">Định dạng: JPG</div>
         <div class="select-items">
           <div data-value="png">Định dạng: PNG</div>
           <div data-value="svg">Định dạng: SVG</div>
         </div>
       </div>
       <button type="button" id="scanQrBtn">Quét QR</button>
-      <button type="button" id="uploadQrBtn">Tải lên QR</button>
-      <input type="file" id="qrImageInput" accept="image/*" style="display: none;">
       <button type="button" id="saveTemplateBtn">Lưu mẫu</button>
       <button type="submit">Tạo QR</button>
     </form>
@@ -61,7 +59,7 @@
     <!-- QR Scan Modal -->
     <div id="qrScanModal" class="modal" style="display: none;">
       <div class="modal-content">
-        <span id="closeModalBtn" class="close">×</span>
+        <span id="closeModalBtn" class="close">&times;</span>
         <h3>Quét mã QR</h3>
         <video id="qrVideo" autoplay playsinline></video>
         <canvas id="qrCanvas" style="display: none;"></canvas>

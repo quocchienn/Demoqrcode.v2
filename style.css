@@ -304,7 +304,7 @@ button:active {
 
 #qrCode img, #qrCode svg {
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   transition: all 0.3s ease;
 }
@@ -396,12 +396,12 @@ button:active {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
-  -webkit-animation: bounceIn  0.5s ease-out forwards;
+  -webkit-animation: bounceIn 0.5s ease-out forwards;
   animation: bounceIn 0.5s ease-out forwards;
 }
 
 @-webkit-keyframes bounceIn {
-  0% { -webkit-transform: translateY(50px) scale(0.9); opacity: 0; }
+  0% { -webkit-transform: translateY(50px) scale(0.9); transform: translateY(50px) scale(0.9); opacity: 0; }
   50% { -webkit-transform: translateY(-10px) scale(1.1); transform: translateY(-10px) scale(1.1); }
   100% { -webkit-transform: translateY(0) scale(1); transform: translateY(0) scale(1); opacity: 1; }
 }
